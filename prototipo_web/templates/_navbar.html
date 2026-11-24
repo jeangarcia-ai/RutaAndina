@@ -1,0 +1,17 @@
+
+{% if request.path != '/' %}
+<nav class="barra-global">
+    <a class="barra-logo" href="{{ url_for('inicio') }}">
+        <span class="barra-icono">RA</span>
+        RutaAndina
+    </a>
+
+    <div class="barra-enlaces">
+        <a href="{{ url_for('inicio') }}">Inicio</a>
+        <a href="{{ url_for('pasajeros') }}">Pasajeros</a>
+        <a href="{{ url_for('solicitar_viaje') }}">Solicitar viaje</a>
+        <a href="{{ url_for('panel_conductor') }}">Conductores</a>
+        <a href="{{ url_for('empresas') }}">Empresas</a>
+    </div>
+</nav>
+{% endif %}
