@@ -134,3 +134,26 @@ INNER JOIN PASAJERO p ON v.id_pasajero = p.id_pasajero
 INNER JOIN HISTORIAL_ESTADO_VIAJE h ON v.id_viaje = h.id_viaje
 WHERE v.id_viaje = 1
 ORDER BY h.fecha_cambio, h.id_historial;
+
+
+-- VISTA: Resumen de viajes por pasajero
+-- Permite consultar los viajes y sus pasajeros.
+
+CREATE OR REPLACE VIEW vista_viajes_pasajeros AS
+SELECT
+    v.id_viaje,
+    p.id_pasajero,
+    CONCAT(p.nombres, ' ', p.apellidos) AS pasajero,
+    v.origen,
+    v.destino,
+    v.distancia_km,
+    v.estado,
+    v.monto_total
+FROM VIAJE v
+INNER JOIN PASAJERO p
+    ON v.id_pasajero = p.id_pasajero;
+
+-- Consulta de comprobación
+SELECT *
+FROM vista_viajes_pasajeros
+LIMIT 10;
